@@ -1,0 +1,41 @@
+.card {
+  width: 323px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card__name {
+  position: absolute;
+  top: 15px;
+  margin: 0;
+}
+
+.cards__image {
+  width: 325px;
+  height: 328px;
+  top: 279px;
+  left: 40px;
+}
+p.cards__weather {
+  display: none;
+}
+
+li.cards__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+p.cards__name {
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+p.cards__name span {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+}
