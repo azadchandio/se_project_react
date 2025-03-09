@@ -13,7 +13,7 @@ p.modal__weather {
 }
 
 img.modal__image {
-    margin: -32px;
+    /* margin: -32px; */
     margin-bottom: 0;
 }
 

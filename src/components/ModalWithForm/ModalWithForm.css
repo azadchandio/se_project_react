@@ -60,7 +60,7 @@
 
 .modal__label {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 8px;
   margin-bottom: 24px;
   font-size: 16px;
