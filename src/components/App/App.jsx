@@ -75,7 +75,12 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={handleAddClick} />
+        <Header 
+          handleAddClick={handleAddClick}
+
+          city={weatherData.city}
+          isLoading={isLoading}
+        />
         {isLoading ? (
           <p>Loading weather data...</p>
         ) : (
