@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import "./WeatherCard.css";
-import { getWeather } from "../../utils/weatherApi";
 import sunnyDay from "../../assets/sunny-day.svg";
 import sunnyNight from "../../assets/sunny-night.svg";
 import cloudyDay from "../../assets/cloudy-day.svg";
@@ -14,68 +12,42 @@ import snowNight from "../../assets/snow-night.svg";
 import fogDay from "../../assets/fog-day.svg";
 import fogNight from "../../assets/fog-night.svg";
 
-function WeatherCard() {
-  const [temperature, setTemperature] = useState(null);
-  const [weatherIcon, setWeatherIcon] = useState(sunnyDay);
-  const [city, setCity] = useState("");
+function WeatherCard({ weatherData, isLoading }) {
+  const getWeatherIcon = () => {
+    if (!weatherData?.weather?.[0]?.main) return sunnyDay;
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
-        const weatherData = await getWeather(latitude, longitude);
+    const isNight = weatherData.dt < weatherData.sys.sunrise || weatherData.dt > weatherData.sys.sunset;
 
-        if (weatherData) {
-          setTemperature(Math.round(weatherData.main.temp));
-          setCity(weatherData.name);
-
-          const isNight =
-            weatherData.dt < weatherData.sys.sunrise ||
-            weatherData.dt > weatherData.sys.sunset;
-
-          // Set weather icon based on condition & time of day
-          switch (weatherData.weather[0].main) {
-            case "Clear":
-              setWeatherIcon(isNight ? sunnyNight : sunnyDay);
-              break;
-            case "Clouds":
-              setWeatherIcon(isNight ? cloudyNight : cloudyDay);
-              break;
-            case "Rain":
-            case "Drizzle":
-              setWeatherIcon(isNight ? rainNight : rainDay);
-              break;
-            case "Thunderstorm":
-              setWeatherIcon(isNight ? stormNight : stormDay);
-              break;
-            case "Snow":
-              setWeatherIcon(isNight ? snowNight : snowDay);
-              break;
-            case "Fog":
-            case "Mist":
-            case "Haze":
-              setWeatherIcon(isNight ? fogNight : fogDay);
-              break;
-            default:
-              setWeatherIcon(isNight ? cloudyNight : cloudyDay);
-          }
-        }
-      },
-      (error) => {
-        console.error("Error getting location:", error);
-      }
-    );
-  }, []);
+    switch (weatherData.weather[0].main) {
+      case "Clear":
+        return isNight ? sunnyNight : sunnyDay;
+      case "Clouds":
+        return isNight ? cloudyNight : cloudyDay;
+      case "Rain":
+      case "Drizzle":
+        return isNight ? rainNight : rainDay;
+      case "Thunderstorm":
+        return isNight ? stormNight : stormDay;
+      case "Snow":
+        return isNight ? snowNight : snowDay;
+      case "Fog":
+      case "Mist":
+      case "Haze":
+        return isNight ? fogNight : fogDay;
+      default:
+        return isNight ? cloudyNight : cloudyDay;
+    }
+  };
 
   return (
     <section className="weather-card">
-      {temperature !== null ? (
-        <>
-          <p className="weather-card__temp">{temperature} &deg;F</p>
-          <img src={weatherIcon} alt="Weather icon" className="weather-card__image" />
-        </>
-      ) : (
+      {isLoading ? (
         <p>Loading weather...</p>
+      ) : (
+        <>
+          <p className="weather-card__temp">{Math.round(weatherData?.main?.temp)} °F</p>
+          <img src={getWeatherIcon()} alt="Weather icon" className="weather-card__image" />
+        </>
       )}
     </section>
   );

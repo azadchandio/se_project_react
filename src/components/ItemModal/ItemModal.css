@@ -16,3 +16,34 @@ img.modal__image {
     margin: -32px;
     margin-bottom: 0;
 }
+
+.modal__content_type_image {
+  padding: 0;
+  max-width: 498px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.modal__footer {
+  padding: 20px;
+}
+
+.modal__caption {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.modal__weather {
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+}

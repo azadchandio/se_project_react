@@ -4,85 +4,115 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #0000004d;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal_opened {
   visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__title {
-  margin: 0;
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 .modal__close {
   position: absolute;
-  top: 20px;
-  right: 28px;
+  top: 23px;
+  right: 23px;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
-  color: #000;
-  padding: 10px 0px;
+  width: 16px;
+  height: 16px;
 }
+
 .modal__close:hover {
+  opacity: 0.6;
   background: none;
 }
 
 .modal__content {
   background-color: #fff;
   position: relative;
+  border-radius: 20px;
   padding: 28px 28px 36px;
   max-width: 496px;
-  box-sizing: border-box;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 .modal__input {
-  display: block;
-  width: 100%;
-  border: 0;
+  border: none;
   border-bottom: 1px solid #000;
-  margin-bottom: 20px;
-  padding: 5px 0px;
+  padding: 0 0 4px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__radio-buttons {
   border: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  margin: 0 0 24px;
 }
-label.modal__label {
+
+.modal__legend {
+  margin-bottom: 12px;
+  font-size: 16px;
   font-weight: 700;
+  line-height: 20px;
 }
 
-label.modal__label.modal__label_type_radio {
-  margin-top: 5px;
-  margin-bottom: 5px;
+.modal__label_type_radio {
+  margin: 8px 0;
 }
 
-label.modal__label.modal__label_type_radio input {
-  margin-right: 5px;
-}
-legend.modal__legend {
-  margin-bottom: 10px;
+.modal__radio-input {
+  margin-right: 8px;
 }
 
-fieldset.modal__radio-buttons {
-  margin-bottom: 20px;
+.modal__submit {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-h2.modal__title {
-  margin-bottom: 20px;
+.modal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
