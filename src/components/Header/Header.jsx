@@ -12,11 +12,15 @@ function Header({ handleAddClick, city, isLoading }) {
     setDate(new Date().toLocaleDateString("en-US", options));
   }, []);
 
+  const displayLocation = isLoading 
+    ? "Loading..." 
+    : (city || "Unknown Location");
+
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="logo" />
       <p className="header__date-location">
-        {`${date}, ${isLoading ? "Loading..." : city || "Unknown Location"}`}
+        {`${date}, ${displayLocation}`}
       </p>
       <button
         onClick={handleAddClick}

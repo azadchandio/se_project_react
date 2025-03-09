@@ -20,9 +20,9 @@ function App() {
 
         if (data) {
           setWeatherData({
-            temp: Math.round(data.main.temp),
+            ...data,
             type: getWeatherType(data.main.temp),
-            city: data.name,
+            city: data.name
           });
         }
       } catch (error) {
@@ -77,7 +77,6 @@ function App() {
       <div className="page__content">
         <Header 
           handleAddClick={handleAddClick}
-
           city={weatherData.city}
           isLoading={isLoading}
         />

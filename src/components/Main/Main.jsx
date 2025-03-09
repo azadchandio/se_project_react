@@ -4,12 +4,14 @@ import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
 function Main({ weatherData, handleCardClick, isLoading }) {
+  const temperature = weatherData?.main?.temp;
+  
   return (
     <main>
       <WeatherCard weatherData={weatherData} isLoading={isLoading} />
       <section className="cards">
         <p className="cards__text">
-          Today is {weatherData.temp} °F / You may want to wear:
+          Today is {temperature ? `${Math.round(temperature)} °F` : "..."} / You may want to wear:
         </p>
         <ul className="cards__list">
           {defaultClothingItems

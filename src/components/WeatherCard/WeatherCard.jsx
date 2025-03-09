@@ -39,13 +39,17 @@ function WeatherCard({ weatherData, isLoading }) {
     }
   };
 
+  const temperature = weatherData?.main?.temp;
+
   return (
     <section className="weather-card">
       {isLoading ? (
         <p>Loading weather...</p>
       ) : (
         <>
-          <p className="weather-card__temp">{Math.round(weatherData?.main?.temp)} °F</p>
+          <p className="weather-card__temp">
+            {temperature ? `${Math.round(temperature)} °F` : "..."}
+          </p>
           <img src={getWeatherIcon()} alt="Weather icon" className="weather-card__image" />
         </>
       )}
