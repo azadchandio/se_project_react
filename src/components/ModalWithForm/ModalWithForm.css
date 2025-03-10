@@ -60,12 +60,15 @@
 
 .modal__label {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+}
+.modal__label_radio{
+  display: flex;
 }
 
 .modal__input {
